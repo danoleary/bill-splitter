@@ -1,6 +1,6 @@
 # bill-splitter
 
-[https://blissful-kowalevski-ead563.netlify.com/]
+https://blissful-kowalevski-ead563.netlify.com/
 
 ## Running in development
 `yarn install`
