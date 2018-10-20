@@ -12,7 +12,7 @@ const FormInput = (props) => (
                     <input className={props.type === 'checkbox' ? 'checkbox' : 'input'} type={props.type}
                     name={props.inputName}
                     onInput={props.handleChange}
-                    defaultValue={props.type === 'checkbox' ? props.initialValue : false} />
+                    defaultValue={props.type !== 'checkbox' ? props.initialValue : false} />
                 </div>
             </div>
         </div>
