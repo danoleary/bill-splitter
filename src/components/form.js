@@ -1,47 +1,41 @@
 import React from "react"
 import PropTypes from "prop-types";
-import FormInput from './formInput'
+import NumberInput from './numberInput'
+import Checkbox from './checkbox'
 
 const Form = ( props ) => (
     <form className="is-narrow">
-        <FormInput
+        <NumberInput
             label="Total bill"
             inputName="totalCost"
             initialValue={0}
-            handleChange={props.handleInputChange}
-            type="number" />
-        <FormInput
+            handleChange={props.handleInputChange} />
+        <NumberInput
             label="Number of people"
             inputName="numPeople"
             initialValue={2}
-            handleChange={props.handleInputChange}
-            type="number" />
-        <FormInput
+            handleChange={props.handleInputChange} />
+        <NumberInput
             label="Tip"
             inputName="tip"
             initialValue={0}
-            handleChange={props.handleInputChange}
-            type="number" />
-        <FormInput
+            handleChange={props.handleInputChange} />
+        <Checkbox
             label="Include alcohol?"
             inputName="includeAlcohol"
-            initialValue={0}
-            handleChange={props.handleInputChange}
-            type="checkbox" />
+            handleChange={props.handleInputChange} />
         {props.includeAlcohol && 
             <div>
-                <FormInput
+                <NumberInput
                     label="Alcohol total cost"
                     inputName="alcoholTotalCost"
                     initialValue={0}
-                    handleChange={props.handleInputChange}
-                    type="number" />
-                <FormInput
+                    handleChange={props.handleInputChange} />
+                <NumberInput
                     label="Number drinking alcohol"
                     inputName="numDrinkingAlcohol"
                     initialValue={0}
-                    handleChange={props.handleInputChange}
-                    type="number" />
+                    handleChange={props.handleInputChange} />
             </div>
         }  
     </form>
