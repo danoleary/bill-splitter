@@ -2,12 +2,13 @@ import React from "react"
 import 'bulma/css/bulma.css'
 import Form from "../components/form";
 import ResultBox from "../components/resultBox";
+import { Helmet } from "react-helmet";
 
 export default class Index extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             numPeople: 2, totalCost: 0, tip: 0, alcoholTotalCost: 0,
             numDrinkingAlcohol: 0, includeAlcohol: false
         };
@@ -22,7 +23,7 @@ export default class Index extends React.Component {
         const name = target.name;
         const type = target.type;
         const value = type === 'checkbox' ? target.checked : target.value;
-        if(type !== 'checkbox' && !value) {
+        if (type !== 'checkbox' && !value) {
             return;
         }
         const parsedValue = this.parseValue(name, value);
@@ -32,7 +33,7 @@ export default class Index extends React.Component {
     }
 
     parseValue(name, value) {
-        switch(name) {
+        switch (name) {
             case 'totalCost':
             case 'tip':
             case 'alcoholTotalCost': {
@@ -50,7 +51,7 @@ export default class Index extends React.Component {
 
     calculateSplits(totalCost, tip, numPeople, alcoholTotalCost, numDrinkingAlcohol) {
         const evenSplit = ((totalCost + tip) / numPeople).toFixed(2);
-        if(totalCost === 0 || numDrinkingAlcohol === 0) {
+        if (totalCost === 0 || numDrinkingAlcohol === 0) {
             return {
                 evenSplit: evenSplit,
                 withAlcohol: evenSplit,
@@ -77,19 +78,25 @@ export default class Index extends React.Component {
         )
         return (
             <section className="section">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <meta name="Description" content="bill splitter"></meta>
+                    <title>Bill splitter</title>
+                     />
+                </Helmet>
                 <div className="container">
                     <div className="columns">
                         <div className="column"></div>
                         <div className="column is-half">
-                            <Form 
-                                includeAlcohol = {this.state.includeAlcohol}
-                                handleInputChange = {this.handleInputChange}
+                            <Form
+                                includeAlcohol={this.state.includeAlcohol}
+                                handleInputChange={this.handleInputChange}
                             />
-                            <br/>
-                            {!this.state.includeAlcohol && 
+                            <br />
+                            {!this.state.includeAlcohol &&
                                 <ResultBox label="each" amount={splits.evenSplit} />
                             }
-                            {this.state.includeAlcohol && 
+                            {this.state.includeAlcohol &&
                                 <div>
                                     <ResultBox label="with alcohol" amount={splits.withAlcohol} />
                                     <ResultBox label="without alcohol" amount={splits.withoutAlcohol} />
