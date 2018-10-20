@@ -28,7 +28,7 @@ const Form = ( props ) => (
             initialValue={0}
             handleChange={props.handleInputChange}
             type="checkbox" />
-        {!!props.includeAlcohol && 
+        {props.includeAlcohol && 
             <div>
                 <FormInput
                     label="Alcohol total cost"
