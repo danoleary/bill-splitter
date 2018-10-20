@@ -22,19 +22,23 @@ export default class Index extends React.Component {
         const target = event.target;
         const name = target.name;
         const type = target.type;
+        console.log('name: ' + name);
+        console.log('type: ' + type);
         const value = type === 'checkbox' ? target.checked : target.value;
+        console.log('value: ' + value);
         if (type !== 'checkbox' && !value) {
             return;
         }
-        if(name === 'includeAlcohol') {
+        if (name === 'includeAlcohol') {
             this.setState({
                 includeAlcohol: !this.state.includeAlcohol
             });
+        } else {
+            const parsedValue = this.parseValue(name, value);
+            this.setState({
+                [name]: parsedValue
+            });
         }
-        const parsedValue = this.parseValue(name, value);
-        this.setState({
-            [name]: parsedValue
-        });
     }
 
     parseValue(name, value) {
@@ -87,7 +91,7 @@ export default class Index extends React.Component {
                     <meta charSet="utf-8" />
                     <meta name="Description" content="bill splitter"></meta>
                     <title>Bill splitter</title>
-                     />
+                    />
                 </Helmet>
                 <div className="container">
                     <div className="columns">
