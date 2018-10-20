@@ -26,6 +26,11 @@ export default class Index extends React.Component {
         if (type !== 'checkbox' && !value) {
             return;
         }
+        if(name === 'includeAlcohol') {
+            this.setState({
+                includeAlcohol: !this.state.includeAlcohol
+            });
+        }
         const parsedValue = this.parseValue(name, value);
         this.setState({
             [name]: parsedValue
