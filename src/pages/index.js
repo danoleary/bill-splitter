@@ -93,10 +93,10 @@ export default class Index extends React.Component {
                                 handleInputChange={this.handleInputChange}
                             />
                             <br />
-                            {!this.state.includeAlcohol &&
+                            {!(!!this.state.includeAlcohol) &&
                                 <ResultBox label="each" amount={splits.evenSplit} />
                             }
-                            {this.state.includeAlcohol &&
+                            {!!this.state.includeAlcohol &&
                                 <div>
                                     <ResultBox label="with alcohol" amount={splits.withAlcohol} />
                                     <ResultBox label="without alcohol" amount={splits.withoutAlcohol} />
