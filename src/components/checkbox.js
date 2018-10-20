@@ -6,7 +6,7 @@ const Checkbox = (props) => (
     <Field label={props.label} control={
         <input className='checkbox' type='checkbox'
             name={props.inputName}
-            onChange={props.handleChange} />
+            onClick={props.handleChange} />
     } />
 )
 
