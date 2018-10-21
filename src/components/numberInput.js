@@ -1,5 +1,6 @@
-import React from "react";
+import React from "react"
 import PropTypes from "prop-types";
+import Field from './field'
 
 const NumberInput = (props) => (
     <Field label={props.label} control={
