@@ -4,10 +4,9 @@ import Field from './field'
 
 const NumberInput = (props) => (
     <Field label={props.label} control={
-        <input className='input' type='number'
+        <input className='input' type='number' pattern="\d*"
             name={props.inputName}
-            onInput={props.handleChange}
-            defaultValue={props.initialValue} />
+            onInput={props.handleChange} />
     } />
 )
 
