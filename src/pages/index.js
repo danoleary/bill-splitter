@@ -16,29 +16,24 @@ export default class Index extends React.Component {
         this.calculateSplits = this.calculateSplits.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.parseValue = this.parseValue.bind(this);
+        this.toggleIncludeAlcohol = this.toggleIncludeAlcohol.bind(this);
+    }
+
+    toggleIncludeAlcohol(event) {
+        this.setState({
+            includeAlcohol: !this.state.includeAlcohol
+        })
     }
 
     handleInputChange(event) {
         const target = event.target;
         const name = target.name;
         const type = target.type;
-        console.log('name: ' + name);
-        console.log('type: ' + type);
         const value = type === 'checkbox' ? target.checked : target.value;
-        console.log('value: ' + value);
-        if (type !== 'checkbox' && !value) {
-            return;
-        }
-        if (name === 'includeAlcohol') {
-            this.setState({
-                includeAlcohol: !this.state.includeAlcohol
-            });
-        } else {
-            const parsedValue = this.parseValue(name, value);
-            this.setState({
-                [name]: parsedValue
-            });
-        }
+        const parsedValue = this.parseValue(name, value);
+        this.setState({
+            [name]: parsedValue
+        });
     }
 
     parseValue(name, value) {
@@ -53,7 +48,7 @@ export default class Index extends React.Component {
                 return parseInt(value);
             }
             default: {
-                return !!value;
+                return value;
             }
         }
     }
@@ -100,6 +95,7 @@ export default class Index extends React.Component {
                             <Form
                                 includeAlcohol={this.state.includeAlcohol}
                                 handleInputChange={this.handleInputChange}
+                                toggleIncludeAlcohol={this.toggleIncludeAlcohol}
                             />
                             <br />
                             {!this.state.includeAlcohol &&

@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types";
 import NumberInput from './numberInput'
-import Checkbox from './checkbox'
 
 const Form = ( props ) => (
     <form className="is-narrow">
@@ -20,10 +19,9 @@ const Form = ( props ) => (
             inputName="tip"
             initialValue={0}
             handleChange={props.handleInputChange} />
-        <Checkbox
-            label="Include alcohol?"
-            inputName="includeAlcohol"
-            handleChange={props.handleInputChange} />
+        <button onClick={props.toggleIncludeAlcohol} className="button" type="button" >
+            Include alcohol?
+        </button>
         {props.includeAlcohol && 
             <div>
                 <NumberInput
